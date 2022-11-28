@@ -7,14 +7,15 @@ cmake_minimum_required(VERSION 3.18...3.25 FATAL_ERROR)
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/fetch_ccad.cmake)
 
 # The user then just has to call the provided cmake function before their project
-ccad_record_and_inject(hello)
+ccad_init_cuda_architectures(PROJECT hello)
 
 project(hello CXX CUDA)
 
-# Or if not specifying up front, also call the explcicit apply method
-# ccad_apply()
+# Or if not specifying up front, also call the explcicit set method
+# ccad_set_cuda_architectures()
 
-ccad_test()
+# Print the current value of CMAKE_CUDA_ARCHITECTURES as a test
+message(STATUS "${CMAKE_CURRENT_LIST_FILE} :: ${CMAKE_CUDA_ARCHITECTURES}")
 
 add_executable(${PROJECT_NAME} src/main.cu)
 
