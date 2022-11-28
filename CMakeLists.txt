@@ -10,7 +10,7 @@ include(FetchContent)
 FetchContent_Declare(
     ccad
     GIT_REPOSITORY https://github.com/ptheywood/cmake-cuda-architectures-default
-    GIT_TAG        aa65ed377bee5a14a8e1fe2ec86392fda5fbd520
+    GIT_TAG        ac71da89979770fdbf1ed6382963e3a806a46b07
     GIT_SHALLOW    OFF
     GIT_PROGRESS   ON
 )
