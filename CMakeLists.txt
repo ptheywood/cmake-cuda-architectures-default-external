@@ -3,19 +3,8 @@ cmake_minimum_required(VERSION 3.18...3.25 FATAL_ERROR)
 # Hardcode the CMAKE CUDA ARCHITECTURES - this is where users can force override it, but ideally they shouldnt. 
 # set(CMAKE_CUDA_ARCHITECTURES "70")
 
-# ------
-# This block should be hidden from the user (and more complciated to allow for specifying a local version etc)
-# fetch the lirbary repo which provides the cmake via fetch content.
-include(FetchContent)
-FetchContent_Declare(
-    ccad
-    GIT_REPOSITORY https://github.com/ptheywood/cmake-cuda-architectures-default
-    GIT_TAG        ac71da89979770fdbf1ed6382963e3a806a46b07
-    GIT_SHALLOW    OFF
-    GIT_PROGRESS   ON
-)
-FetchContent_MakeAvailable(ccad)
-# /-----
+# Include the upstream project which imports the CUDA_ARCHITECTURES logic functions.
+include(${CMAKE_CURRENT_LIST_DIR}/cmake/fetch_ccad.cmake)
 
 # The user then just has to call the provided cmake function before their project
 ccad_record_and_inject(hello)
